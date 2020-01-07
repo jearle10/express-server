@@ -13,10 +13,13 @@ app.listen(3000, function() {
 
 app.get("/", function(req, res) {
   console.log(req); // Log the request
-  res.send("<h1> Hello World </h1>"); // Send a response
+  // res.send("Hello World") Send a none file response
+  res.sendFile(__dirname + "/index.html"); // Send a response
 });
 
+const route = "/about"; // Store the about route in const
+
 // Handle get requests to an additional url
-app.get("/contact", function(req, res) {
+app.get(`${route}`, function(req, res) {
   res.send("Welcome to the about page");
 });
