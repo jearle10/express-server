@@ -1,6 +1,6 @@
 This is boiler plate code for a node.js express web server
 
-Environment setup steps
+Environment setup steps (skip to step 4 if cloning repo)
 
 1. mkdir "Directory_name"
 2. cd into directory

@@ -3,6 +3,9 @@
 const express = require("express");
 const app = express();
 
+// Add middleware to return all site static files
+app.use(express.static("dist"));
+
 // Instruct the app to listen on port 3000
 
 app.listen(3000, function() {
@@ -12,14 +15,17 @@ app.listen(3000, function() {
 // Handle get requests to the root url
 
 app.get("/", function(req, res) {
-  console.log(req); // Log the request
   // res.send("Hello World") Send a none file response
-  res.sendFile(__dirname + "/index.html"); // Send a response
+
+  res.sendFile(__dirname + "/index.html");
 });
 
-const route = "/about"; // Store the about route in const
+// Store the about route in const
+
+const route = "/about";
 
 // Handle get requests to an additional url
+
 app.get(`${route}`, function(req, res) {
   res.send("Welcome to the about page");
 });
