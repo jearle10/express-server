@@ -3,8 +3,11 @@
 const express = require("express");
 const app = express();
 
-// Add middleware to return all site static files
-app.use(express.static("dist"));
+const bodyParser = require("body-parser");
+
+// Add middleware
+app.use(express.static("dist")); // Returns all static sites
+app.use(bodyParser.urlencoded({ extended: true })); // Parse the HTTP requests
 
 // Instruct the app to listen on port 3000
 
@@ -18,6 +21,11 @@ app.get("/", function(req, res) {
   // res.send("Hello World") Send a none file response
 
   res.sendFile(__dirname + "/index.html");
+});
+
+app.post("/", function(req, res) {
+  console.log(req.body);
+  res.send("Thanks");
 });
 
 // Store the about route in const
