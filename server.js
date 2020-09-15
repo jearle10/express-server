@@ -5,35 +5,30 @@ const app = express();
 
 const bodyParser = require("body-parser");
 
+
 // Add middleware
-app.use(express.static("dist")); // Returns all static sites
+// app.use(express.static("dist")); // Returns all static sites
+
 app.use(bodyParser.urlencoded({ extended: true })); // Parse the HTTP requests
+
+app.use(bodyParser.json())
 
 // Instruct the app to listen on port 3000
 
-app.listen(3000, function() {
-  console.log("Server listening on port 3000"); // Call back when server listening
+app.listen(3000, () => {
+  console.log(`Server listening on port 3000`); // Call back when server listening
 });
 
 // Handle get requests to the root url
 
-app.get("/", function(req, res) {
-  // res.send("Hello World") Send a none file response
-
-  res.sendFile(__dirname + "/index.html");
+app.get("/", (req, res) => {
+  console.log(req)
+  res.json({ sucess: true, message: "Hello from node.js server" });
 });
 
-app.post("/", function(req, res) {
+app.post("/", (req, res) => {
   console.log(req.body);
-  res.send("Thanks");
+
+  res.json({ sucess: true, message: "Thanks", data: req.body });
 });
 
-// Store the about route in const
-
-const route = "/about";
-
-// Handle get requests to an additional url
-
-app.get(`${route}`, function(req, res) {
-  res.send("Welcome to the about page");
-});
