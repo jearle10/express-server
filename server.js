@@ -22,12 +22,12 @@ app.listen(3000, () => {
 // Handle get requests to the root url
 
 app.get("/", (req, res) => {
-  console.log(req)
+  console.log(``${req.method}:`)
   res.json({ sucess: true, message: "Hello from node.js server" });
 });
 
 app.post("/", (req, res) => {
-  console.log(req.body);
+  console.log(req.body.);
 
   res.json({ sucess: true, message: "Thanks", data: req.body });
 });
