@@ -1,6 +1,6 @@
 const express = require("express");
 
-// Create express server and use port 3000 if not env variables are set
+// Create an express server and use port 3000 if not env variables are set
 
 function createServer() {
   let port = process.env.PORT || 3000;
